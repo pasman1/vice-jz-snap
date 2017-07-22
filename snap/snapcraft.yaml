@@ -7,12 +7,12 @@ description: |
   models, the PLUS4 and the CBM-II (aka C610/C510). An extra emulator is
   provided for C64 expanded with the CMD SuperCPU. 
 
-grade: devel # must be 'stable' to release into candidate/stable channels
+grade: stable
 confinement: strict
 
 apps:
   c1541:
-    command: desktop-launch c1541
+    command: check-and-launch c1541
     plugs: [home]
 
   cartconv:
@@ -28,44 +28,44 @@ apps:
     plugs: [home]
 
   x128:
-    command: desktop-launch x128
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch x128
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   x64:
-    command: desktop-launch x64
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch x64
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   x64dtv:
-    command: desktop-launch x64dtv
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch x64dtv
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   x64sc:
-    command: desktop-launch x64sc
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch x64sc
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xcbm2:
-    command: desktop-launch xcbm2
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch xcbm2
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xcbm5x0:
-    command: desktop-launch xcbm5x0
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch xcbm5x0
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xpet:
-    command: desktop-launch xpet
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch xpet
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xplus4:
-    command: desktop-launch xplus4
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch xplus4
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xscpu64:
-    command: desktop-launch xscpu64
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch xscpu64
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xvic:
-    command: desktop-launch xvic
-    plugs: [home, unity7, pulseaudio]
+    command: check-and-launch xvic
+    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
 plugs:
     gnome-3-24-platform:
@@ -121,6 +121,12 @@ parts:
       - -usr/share/avahi
       - -usr/share/man
 
+  launcher:
+    plugin: dump
+    organize:
+      check-and-launch: bin/
+      vicerc: lib64/vice/
+
   desktop-gnome-platform:
     source-subdir: gtk
     plugin: make
@@ -140,4 +146,3 @@ parts:
       - libgtk-3-0
     prime:
       - "-*"
-

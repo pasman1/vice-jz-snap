@@ -12,7 +12,7 @@ fi
 if [ ! -f $VICEDIR/vicerc ]
 then
 	echo Copying configuration file
-	cp $SNAP/vicerc $VICEDIR/vicerc
+	cp $SNAP/lib64/vice/vicerc $VICEDIR/vicerc
 fi
 
 exec desktop-launch $*
