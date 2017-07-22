@@ -10,6 +10,63 @@ description: |
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: strict
 
+apps:
+  c1541:
+    command: desktop-launch c1541
+    plugs: [home]
+
+  cartconv:
+    command: cartconv
+    plugs: [home]
+
+  petcat:
+    command: petcat
+    plugs: [home]
+
+  vsid:
+    command: vsid
+    plugs: [home]
+
+  x128:
+    command: desktop-launch x128
+    plugs: [home, unity7, pulseaudio]
+
+  x64:
+    command: desktop-launch x64
+    plugs: [home, unity7, pulseaudio]
+
+  x64dtv:
+    command: desktop-launch x64dtv
+    plugs: [home, unity7, pulseaudio]
+
+  x64sc:
+    command: desktop-launch x64sc
+    plugs: [home, unity7, pulseaudio]
+
+  xcbm2:
+    command: desktop-launch xcbm2
+    plugs: [home, unity7, pulseaudio]
+
+  xcbm5x0:
+    command: desktop-launch xcbm5x0
+    plugs: [home, unity7, pulseaudio]
+
+  xpet:
+    command: desktop-launch xpet
+    plugs: [home, unity7, pulseaudio]
+
+  xplus4:
+    command: desktop-launch xplus4
+    plugs: [home, unity7, pulseaudio]
+
+  xscpu64:
+    command: desktop-launch xscpu64
+    plugs: [home, unity7, pulseaudio]
+
+  xvic:
+    command: desktop-launch xvic
+    plugs: [home, unity7, pulseaudio]
+
 plugs:
     gnome-3-24-platform:
       interface: content
@@ -26,9 +83,8 @@ parts:
       - --enable-fullscreen
       - --disable-parsid
       - --with-midas
-      - --with-uithreads
       - --without-xaw3d
-      - --enable=arch=no
+      - --enable-arch=no
       - --enable-vte
       - --with-jpeg
       - --enable-lame
@@ -40,13 +96,13 @@ parts:
       - libreadline-dev
       - libjpeg-dev
       - libpng-dev
-      - libgtk3.0-dev
+      - libgtk-3-dev
       - libasound2-dev
       - libpulse-dev
       - libmp3lame-dev
       - libavformat-dev
       - libieee1284-3-dev
-      - libgtkgkext1-dev
+      - libgtkglext1-dev
       - libvte-2.91-dev
       - libswscale-dev
       - xfonts-utils
@@ -54,9 +110,14 @@ parts:
     stage-packages:
       - libasound2
       - libpulse0
-      - libreadline7
-      - libvte-2.9
+      - libreadline6
+      - libvte-2.91-0
       - zlib1g
+    prime:
+      - -var
+      - -usr/share/apport
+      - -usr/share/avahi
+      - -usr/share/man
 
   desktop-gnome-platform:
     source-subdir: gtk
