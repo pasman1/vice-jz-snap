@@ -1,5 +1,5 @@
 name: vice-jz
-version: 3.1-0
+version: 3.1-1
 summary: Versatile Commodore Emulator
 description: |
   VICE executes programs intended for the old 8-bit computers. The current 
@@ -12,7 +12,7 @@ confinement: strict
 
 apps:
   c1541:
-    command: check-and-launch c1541
+    command: desktop-launch c1541
     plugs: [home]
 
   cartconv:
@@ -28,43 +28,43 @@ apps:
     plugs: [home]
 
   x128:
-    command: check-and-launch x128
+    command: desktop-launch x128
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   x64:
-    command: check-and-launch x64
+    command: desktop-launch x64
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   x64dtv:
-    command: check-and-launch x64dtv
+    command: desktop-launch x64dtv
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   x64sc:
-    command: check-and-launch x64sc
+    command: desktop-launch x64sc
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xcbm2:
-    command: check-and-launch xcbm2
+    command: desktop-launch xcbm2
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xcbm5x0:
-    command: check-and-launch xcbm5x0
+    command: desktop-launch xcbm5x0
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xpet:
-    command: check-and-launch xpet
+    command: desktop-launch xpet
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xplus4:
-    command: check-and-launch xplus4
+    command: desktop-launch xplus4
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xscpu64:
-    command: check-and-launch xscpu64
+    command: desktop-launch xscpu64
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
   xvic:
-    command: check-and-launch xvic
+    command: desktop-launch xvic
     plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
 
 plugs:
@@ -78,7 +78,7 @@ parts:
     source: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.1.tar.gz
     plugin: autotools
     configflags:
-      - --prefix=
+      - --prefix=/snap/vice-jz/current
       - --enable-gnomeui3
       - --enable-fullscreen
       - --disable-parsid
@@ -117,15 +117,24 @@ parts:
       - -var
       - -share/info
       - -share/man
+      - -usr/share/alsa
       - -usr/share/apport
       - -usr/share/avahi
+      - -usr/share/bug
+      - -usr/share/dbus-1
+      - -usr/share/doc
+      - -usr/share/doc-base
+      - -usr/share/icons
+      - -usr/share/libthai
+      - -usr/share/lintian
       - -usr/share/man
-
-  launcher:
-    plugin: dump
+      - -usr/share/mime
+      - -usr/share/pkgconfig
+      - -snap
     organize:
-      check-and-launch: bin/
-      vicerc: lib64/vice/
+      snap/vice-jz/current/bin: bin
+      snap/vice-jz/current/lib64: lib64
+      snap/vice-jz/current/share: share
 
   desktop-gnome-platform:
     source-subdir: gtk
