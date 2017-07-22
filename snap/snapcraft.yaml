@@ -10,10 +10,29 @@ description: |
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: strict
 
+plugs:
+    gnome-3-24-platform:
+      interface: content
+      target: $SNAP/gnome-platform
+      default-provider: gnome-3-24:gnome-3-24-platform
+
 parts:
   vice:
     source: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.1.tar.gz
     plugin: autotools
+    configflags:
+      - --prefix=
+      - --enable-gnomeui3
+      - --enable-fullscreen
+      - --disable-parsid
+      - --with-midas
+      - --with-uithreads
+      - --without-xaw3d
+      - --enable=arch=no
+      - --enable-vte
+      - --with-jpeg
+      - --enable-lame
+      - --with-pulse
     build-packages:
       - bison
       - flex
@@ -21,7 +40,7 @@ parts:
       - libreadline-dev
       - libjpeg-dev
       - libpng-dev
-      - libgtk2.0-dev
+      - libgtk3.0-dev
       - libasound2-dev
       - libpulse-dev
       - libmp3lame-dev
@@ -30,7 +49,6 @@ parts:
       - libgtkgkext1-dev
       - libvte-2.91-dev
       - libswscale-dev
-      - libxaw7-dev
       - xfonts-utils
       - yasm
     stage-packages:
@@ -39,5 +57,24 @@ parts:
       - libreadline7
       - libvte-2.9
       - zlib1g
-    after:
-      - desktop-gtk2
+
+  desktop-gnome-platform:
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk3"]
+    build-packages:
+      - libgtk-3-dev
+    source: https://github.com/kenvandine/snapcraft-desktop-helpers.git
+    source-branch: gnome-3-24
+    install: mkdir -p $SNAPCRAFT_PART_INSTALL/gnome-platform
+
+  # https://bazaar.launchpad.net/~ubuntu-desktop/+junk/ghex-snap-gnome-3-24/view/head:/snapcraft.yaml
+
+  # workaround snapcraft trying to outsmart us by copying ldd listed libraries
+  workaround:
+    plugin: nil
+    stage-packages:
+      - libgtk-3-0
+    prime:
+      - "-*"
+
