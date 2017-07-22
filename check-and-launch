@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+VICEDIR=$SNAP_USER_DATA/.vice
+
+if [ ! -d $VICEDIR ]
+then
+	echo Creating $VICEDIR
+	mkdir $VICEDIR
+fi
+
+if [ ! -f $VICEDIR/vicerc ]
+then
+	echo Copying configuration file
+	cp $SNAP/vicerc $VICEDIR/vicerc
+fi
+
+exec desktop-launch $*
+
