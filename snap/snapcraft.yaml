@@ -1,0 +1,43 @@
+name: vice-jz
+version: 3.1-0
+summary: Versatile Commodore Emulator
+description: |
+  VICE executes programs intended for the old 8-bit computers. The current 
+  version emulates the C64, the C64DTV, the C128, the VIC20, practically all PET
+  models, the PLUS4 and the CBM-II (aka C610/C510). An extra emulator is
+  provided for C64 expanded with the CMD SuperCPU. 
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: strict
+
+parts:
+  vice:
+    source: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.1.tar.gz
+    plugin: autotools
+    build-packages:
+      - bison
+      - flex
+      - texinfo
+      - libreadline-dev
+      - libjpeg-dev
+      - libpng-dev
+      - libgtk2.0-dev
+      - libasound2-dev
+      - libpulse-dev
+      - libmp3lame-dev
+      - libavformat-dev
+      - libieee1284-3-dev
+      - libgtkgkext1-dev
+      - libvte-2.91-dev
+      - libswscale-dev
+      - libxaw7-dev
+      - xfonts-utils
+      - yasm
+    stage-packages:
+      - libasound2
+      - libpulse0
+      - libreadline7
+      - libvte-2.9
+      - zlib1g
+    after:
+      - desktop-gtk2
