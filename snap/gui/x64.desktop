@@ -61,6 +61,6 @@ Name[zh_TW]=Commodore 64
 GenericName=
 Comment=
 Icon=${SNAP}/meta/gui/c64icon-48x42.xpm
-Exec=vice-jz.x64 %f
+Exec=vice-jz.x64 -kernal ${SNAP}/lib64/vice/C64/kernal -basic ${SNAP}/lib64/vice/C64/basic -chargen ${SNAP}/lib64/vice/C64/chargen %f
 Terminal=false
 Categories=Application;X-Debian-Applications-Emulators;

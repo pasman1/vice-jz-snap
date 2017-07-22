@@ -115,6 +115,8 @@ parts:
       - zlib1g
     prime:
       - -var
+      - -share/info
+      - -share/man
       - -usr/share/apport
       - -usr/share/avahi
       - -usr/share/man
