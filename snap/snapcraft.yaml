@@ -1,5 +1,5 @@
 name: vice-jz
-version: 3.1-1
+version: 3.1-2
 summary: Versatile Commodore Emulator
 description: |
   VICE executes programs intended for the old 8-bit computers. The current 
@@ -135,6 +135,13 @@ parts:
       snap/vice-jz/current/bin: bin
       snap/vice-jz/current/lib64: lib64
       snap/vice-jz/current/share: share
+    after:
+      - desktop-gnome-platform
+    prepare: |
+      PNAME=linux_no_emultest.patch
+      echo Applying $PNAME
+      cat ../../../$PNAME | patch -p1
+      echo Patching done
 
   desktop-gnome-platform:
     source-subdir: gtk

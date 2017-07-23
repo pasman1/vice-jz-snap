@@ -1,0 +1,30 @@
+diff -ruN src.old/src/platform/platform_linux_runtime_os.c src/src/platform/platform_linux_runtime_os.c
+--- src.old/src/platform/platform_linux_runtime_os.c	2017-07-23 04:16:26.720286369 +0000
++++ src/src/platform/platform_linux_runtime_os.c	2017-07-23 04:17:02.885222118 +0000
+@@ -258,26 +258,6 @@
+     if (!got_linux_version) {
+         unlink("emultest.sh");
+         unlink("emultest.netbsd");
+-        bsd_emul_test = fopen("emultest.sh", "wb");
+-        if (bsd_emul_test) {
+-            fprintf(bsd_emul_test, "#!/bin/sh\n");
+-            fprintf(bsd_emul_test, "if test -f /proc/self/emul; then\n");
+-            fprintf(bsd_emul_test, "  echo emulation >emultest.netbsd\n");
+-            fprintf(bsd_emul_test, "fi\n");
+-            fclose(bsd_emul_test);
+-            chmod("emultest.sh", S_IRWXU);
+-            ret = system("./emultest.sh");
+-            if (!ret) {
+-                unlink("emultest.sh");
+-            }
+-            bsd_emul_test = fopen("emultest.netbsd", "rb");
+-            if (bsd_emul_test) {
+-                sprintf(linux_version, "NetBSD");
+-                fclose(bsd_emul_test);
+-                unlink("emultest.netbsd");
+-                is_bsd = 1;
+-            }
+-        }
+ 
+         if (!is_bsd) {
+             uname(&name);
