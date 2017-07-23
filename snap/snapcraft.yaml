@@ -107,12 +107,6 @@ parts:
       - libswscale-dev
       - xfonts-utils
       - yasm
-    stage-packages:
-      - libasound2
-      - libpulse0
-      - libreadline6
-      - libvte-2.91-0
-      - zlib1g
     prime:
       - -var
       - -share/info
@@ -142,6 +136,9 @@ parts:
       echo Applying $PNAME
       cat ../../../$PNAME | patch -p1
       echo Patching done
+    install: |
+      echo Stripping executables
+      strip $SNAPCRAFT_PART_INSTALL/snap/vice-jz/current/bin/*
 
   desktop-gnome-platform:
     source-subdir: gtk
