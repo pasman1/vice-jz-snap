@@ -1,5 +1,5 @@
 name: vice-jz
-version: 3.1-3
+version: 3.1-4
 summary: Versatile Commodore Emulator
 description: |
   VICE executes programs intended for the old 8-bit computers. The current 
@@ -12,7 +12,7 @@ confinement: strict
 
 apps:
   c1541:
-    command: desktop-launch c1541
+    command: desktop-launch override-x11 c1541
     plugs: [home]
 
   cartconv:
@@ -28,44 +28,44 @@ apps:
     plugs: [home]
 
   x128:
-    command: desktop-launch x128
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 x128
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   x64:
-    command: desktop-launch x64
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 x64
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   x64dtv:
-    command: desktop-launch x64dtv
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 x64dtv
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   x64sc:
-    command: desktop-launch x64sc
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 x64sc
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xcbm2:
-    command: desktop-launch xcbm2
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 xcbm2
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xcbm5x0:
-    command: desktop-launch xcbm5x0
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 xcbm5x0
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xpet:
-    command: desktop-launch xpet
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 xpet
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xplus4:
-    command: desktop-launch xplus4
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 xplus4
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xscpu64:
-    command: desktop-launch xscpu64
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 xscpu64
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xvic:
-    command: desktop-launch xvic
-    plugs: [home, unity7, pulseaudio, joystick, io-ports-control]
+    command: desktop-launch override-x11 xvic
+    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
 plugs:
   gnome-3-26-1604:
@@ -147,3 +147,9 @@ parts:
     plugin: nil
     prime:
       - "-*"
+
+  launcher:
+    plugin: dump
+    source: launcher
+    organize:
+      override-x11: bin/
