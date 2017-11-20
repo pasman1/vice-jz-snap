@@ -29,43 +29,43 @@ apps:
 
   x128:
     command: desktop-launch override-x11 x128
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   x64:
     command: desktop-launch override-x11 x64
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   x64dtv:
     command: desktop-launch override-x11 x64dtv
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   x64sc:
     command: desktop-launch override-x11 x64sc
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xcbm2:
     command: desktop-launch override-x11 xcbm2
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xcbm5x0:
     command: desktop-launch override-x11 xcbm5x0
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xpet:
     command: desktop-launch override-x11 xpet
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xplus4:
     command: desktop-launch override-x11 xplus4
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xscpu64:
     command: desktop-launch override-x11 xscpu64
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
   xvic:
     command: desktop-launch override-x11 xvic
-    plugs: [home, x11, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
+    plugs: [home, x11, wayland, desktop, desktop-legacy, pulseaudio, joystick, io-ports-control]
 
 plugs:
   gnome-3-26-1604:
