@@ -1,5 +1,5 @@
 name: vice-jz
-version: 3.1-4
+version: 3.2
 summary: Versatile Commodore Emulator
 description: |
   VICE executes programs intended for the old 8-bit computers. The current 
@@ -75,8 +75,10 @@ plugs:
 
 parts:
   vice:
-    source: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.1.tar.gz
+    source: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.2.tar.gz
     plugin: autotools
+    build-attributes:
+      - no-system-libraries
     configflags:
       - --prefix=/snap/vice-jz/current
       - --enable-gnomeui3
@@ -131,12 +133,12 @@ parts:
       snap/vice-jz/current/share: share
     after:
       - desktop-gnome-platform
-    prepare: |
+    override-build: |
       PNAME=linux_no_emultest.patch
       echo Applying $PNAME
-      cat ../../../$PNAME | patch -p1
+      cat $SNAPCRAFT_STAGE/../$PNAME | patch -p1
       echo Patching done
-    install: |
+      snapcraftctl build
       echo Stripping executables
       strip $SNAPCRAFT_PART_INSTALL/snap/vice-jz/current/bin/*
 
