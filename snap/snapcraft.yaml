@@ -1,5 +1,5 @@
 name: vice-jz
-version: v3.2
+version: '3.2'
 summary: Versatile Commodore Emulator
 description: |
   VICE executes programs intended for the old 8-bit computers. It currently 
