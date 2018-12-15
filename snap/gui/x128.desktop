@@ -60,6 +60,6 @@ Name[zh_CN]=Commodore 128
 Name[zh_TW]=Commodore 128
 GenericName=
 Comment=
-Icon=${SNAP}/meta/gui/c128icon-48x42.xpm
+Icon=${SNAP}/meta/gui/x128.png
 Exec=vice-jz.x128 %f
 Categories=Game;Application;X-Debian-Applications-Emulators;
