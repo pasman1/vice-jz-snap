@@ -150,10 +150,6 @@ parts:
     after:
       - desktop-gnome-platform
     override-build: |
-      PNAME=linux_no_emultest.patch
-      echo Applying $PNAME
-      cat $SNAPCRAFT_STAGE/../$PNAME | patch -p1
-      echo Patching done
       snapcraftctl build
       echo Stripping executables
       strip $SNAPCRAFT_PART_INSTALL/snap/vice-jz/current/bin/*
