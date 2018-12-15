@@ -32,7 +32,6 @@ plugs:
 environment:
     XDG_DATA_DIRS: $SNAP/data-dir:$XDG_DATA_DIRS
     GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
-    LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/omegat-cat
 
 apps:
   c1541:
