@@ -1,5 +1,5 @@
 name: vice-jz
-version: '3.3'
+version: '3.6.1'
 summary: Versatile Commodore Emulator
 description: |
   VICE executes programs intended for the old 8-bit computers. It currently 
@@ -9,7 +9,7 @@ description: |
 
 grade: stable
 confinement: strict
-base: core18
+base: core22
 
 plugs:
     gnome-3-28-1804:
@@ -93,7 +93,7 @@ apps:
 
 parts:
   vice:
-    source: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.3.tar.gz
+    source: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.6.1.tar.gz
     plugin: autotools
     configflags:
       - --prefix=/snap/vice-jz/current
